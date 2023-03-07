@@ -14,14 +14,20 @@ import org.photonvision.PhotonUtils;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 
+import edu.wpi.first.apriltag.AprilTagFieldLayout;
 import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.math.util.Units;
 import edu.wpi.first.net.PortForwarder;
+import java.util.ArrayList;
 
 public class Robot extends TimedRobot {
 
   // Change this to match the name of your camera
   PhotonCamera camera = new PhotonCamera("iSeeYou");
+
+  // Create list of april tags on the field to know location
+  private ArrayList<AprilTagFieldLayout> aprilTagList = new ArrayList<AprilTagFieldLayout>();
+  aprilTagList.add(AprilTagFields.k2023ChargedUp.loadAprilTagLayoutField());
 
   // Constants such as camera and target height stored. Change per robot and goal!
   final double CAMERA_HEIGHT_METERS = Units.inchesToMeters(24);
